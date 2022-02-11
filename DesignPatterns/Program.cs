@@ -1,4 +1,6 @@
-﻿using DesignPatterns.Strategy;
+﻿using DesignPatterns.Observer;
+using DesignPatterns.Observer.Displays;
+using DesignPatterns.Strategy;
 using DesignPatterns.Strategy.Ducks;
 
 Duck mallard = new Mallard();
@@ -10,3 +12,10 @@ Duck modelDuck = new ModelDuck();
 modelDuck.Display();
 modelDuck.Quack();
 modelDuck.Fly();
+
+
+WeatherData weatherData = new WeatherData();
+
+ConditionsDisplay conditionsDisplay = new ConditionsDisplay(weatherData);
+weatherData.MeasurementsChanged();
+weatherData.NotifyObservers();

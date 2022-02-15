@@ -1,4 +1,6 @@
-﻿using DesignPatterns.Decorator;
+﻿using DesignPatterns.Abstract_Factory;
+using DesignPatterns.Abstract_Factory.Factories;
+using DesignPatterns.Decorator;
 using DesignPatterns.Decorator.Beverages;
 using DesignPatterns.Decorator.Decorators;
 using DesignPatterns.Observer;
@@ -34,3 +36,8 @@ Beverage beverage2 = new HouseBlend();
 beverage2 = new Mocha(new Milk(beverage2));
 Console.WriteLine(beverage2.Name);
 Console.WriteLine(beverage2.Cost());
+
+Console.WriteLine("--------");
+
+PizzaStore pizzaStore = new PizzaStore(new NYPizzaFactory());
+pizzaStore.OrderPizza("cheese");

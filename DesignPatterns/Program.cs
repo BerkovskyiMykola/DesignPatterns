@@ -3,8 +3,10 @@ using DesignPatterns.Abstract_Factory.Factories;
 using DesignPatterns.Decorator;
 using DesignPatterns.Decorator.Beverages;
 using DesignPatterns.Decorator.Decorators;
+using DesignPatterns.Factory_Method.Developers;
 using DesignPatterns.Observer;
 using DesignPatterns.Observer.Displays;
+using DesignPatterns.Singleton;
 using DesignPatterns.Strategy;
 using DesignPatterns.Strategy.Ducks;
 
@@ -41,3 +43,16 @@ Console.WriteLine("--------");
 
 PizzaStore pizzaStore = new PizzaStore(new NYPizzaFactory());
 pizzaStore.OrderPizza("cheese");
+
+Console.WriteLine("--------");
+
+Developer dev = new PanelDeveloper("Test1");
+var house2 = dev.Create();
+
+Console.WriteLine("--------");
+
+ChocolateBoiler chocolateBoiler = ChocolateBoiler.GetInstance();
+chocolateBoiler.Fill();
+Console.WriteLine($"isEmpty: {chocolateBoiler.isEmpty} isBoiled: {chocolateBoiler.isBoiled}");
+ChocolateBoiler chocolateBoiler2 = ChocolateBoiler.GetInstance();
+Console.WriteLine($"isEmpty: {chocolateBoiler2.isEmpty} isBoiled: {chocolateBoiler2.isBoiled}");

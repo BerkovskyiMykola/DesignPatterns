@@ -1,5 +1,7 @@
 ﻿using DesignPatterns.Abstract_Factory;
 using DesignPatterns.Abstract_Factory.Factories;
+using DesignPatterns.Command;
+using DesignPatterns.Command.Commands;
 using DesignPatterns.Decorator;
 using DesignPatterns.Decorator.Beverages;
 using DesignPatterns.Decorator.Decorators;
@@ -56,3 +58,9 @@ chocolateBoiler.Fill();
 Console.WriteLine($"isEmpty: {chocolateBoiler.isEmpty} isBoiled: {chocolateBoiler.isBoiled}");
 ChocolateBoiler chocolateBoiler2 = ChocolateBoiler.GetInstance();
 Console.WriteLine($"isEmpty: {chocolateBoiler2.isEmpty} isBoiled: {chocolateBoiler2.isBoiled}");
+
+Console.WriteLine("--------");
+
+SimpleRemoteControl remote = new SimpleRemoteControl();
+remote.SetCommand(new LightOnCommand(new()));
+remote.ButtonWasPressed();

@@ -1,10 +1,14 @@
 ﻿using DesignPatterns.Abstract_Factory;
 using DesignPatterns.Abstract_Factory.Factories;
+using DesignPatterns.Adapter.Adapters;
+using DesignPatterns.Adapter.Ducks;
+using DesignPatterns.Adapter.Turkeys;
 using DesignPatterns.Command;
 using DesignPatterns.Command.Commands;
 using DesignPatterns.Decorator;
 using DesignPatterns.Decorator.Beverages;
 using DesignPatterns.Decorator.Decorators;
+using DesignPatterns.Facade;
 using DesignPatterns.Factory_Method.Developers;
 using DesignPatterns.Observer;
 using DesignPatterns.Observer.Displays;
@@ -64,3 +68,32 @@ Console.WriteLine("--------");
 SimpleRemoteControl remote = new SimpleRemoteControl();
 remote.SetCommand(new LightOnCommand(new()));
 remote.ButtonWasPressed();
+
+Console.WriteLine("--------");
+
+IDuck duck = new MallardDuck();
+ITurkey turkey = new WildTurkey();
+IDuck turkeyAdapter = new TurkeyAdapter(turkey);
+
+static void TestDuck(IDuck duck)
+{
+    duck.Quack();
+    duck.Fly();
+}
+
+Console.WriteLine("The Turkey says...");
+turkey.Gobble();
+turkey.Fly();
+
+Console.WriteLine("The Duck says...");
+TestDuck(duck);
+
+Console.WriteLine("The TurkeyAdapter says...");
+TestDuck(turkeyAdapter);
+
+Console.WriteLine("--------");
+
+VisualStudioFacade ide = new VisualStudioFacade(new(), new(), new());
+
+Programmer programmer = new Programmer();
+programmer.CreateApplication(ide);

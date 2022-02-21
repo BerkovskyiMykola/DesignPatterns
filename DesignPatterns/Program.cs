@@ -15,6 +15,7 @@ using DesignPatterns.Observer.Displays;
 using DesignPatterns.Singleton;
 using DesignPatterns.Strategy;
 using DesignPatterns.Strategy.Ducks;
+using DesignPatterns.Template_Method;
 
 Duck mallard = new Mallard();
 mallard.Display();
@@ -97,3 +98,8 @@ VisualStudioFacade ide = new VisualStudioFacade(new(), new(), new());
 
 Programmer programmer = new Programmer();
 programmer.CreateApplication(ide);
+
+Console.WriteLine("--------");
+
+Tea myTea = new Tea();
+myTea.PrepareRecipe();

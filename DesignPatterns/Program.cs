@@ -10,6 +10,7 @@ using DesignPatterns.Decorator.Beverages;
 using DesignPatterns.Decorator.Decorators;
 using DesignPatterns.Facade;
 using DesignPatterns.Factory_Method.Developers;
+using DesignPatterns.Iterator;
 using DesignPatterns.Observer;
 using DesignPatterns.Observer.Displays;
 using DesignPatterns.Singleton;
@@ -103,3 +104,14 @@ Console.WriteLine("--------");
 
 Tea myTea = new Tea();
 myTea.PrepareRecipe();
+
+Console.WriteLine("--------");
+
+PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
+DinerMenu dinerMenu = new DinerMenu();
+
+Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu);
+
+waitress.printMenu();
+
+Console.WriteLine("--------");

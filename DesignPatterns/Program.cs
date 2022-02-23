@@ -5,6 +5,7 @@ using DesignPatterns.Adapter.Ducks;
 using DesignPatterns.Adapter.Turkeys;
 using DesignPatterns.Command;
 using DesignPatterns.Command.Commands;
+using DesignPatterns.Composite;
 using DesignPatterns.Decorator;
 using DesignPatterns.Decorator.Beverages;
 using DesignPatterns.Decorator.Decorators;
@@ -17,6 +18,8 @@ using DesignPatterns.Singleton;
 using DesignPatterns.Strategy;
 using DesignPatterns.Strategy.Ducks;
 using DesignPatterns.Template_Method;
+using Directory = DesignPatterns.Composite.Directory;
+using File = DesignPatterns.Composite.File;
 
 Duck mallard = new Mallard();
 mallard.Display();
@@ -115,3 +118,30 @@ Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu);
 waitress.printMenu();
 
 Console.WriteLine("--------");
+
+Component fileSystem = new Directory("Файловая система");
+// определяем новый диск
+Component diskC = new Directory("Диск С");
+// новые файлы
+Component pngFile = new File("12345.png");
+Component docxFile = new File("Document.docx");
+// добавляем файлы на диск С
+diskC.Add(pngFile);
+diskC.Add(docxFile);
+// добавляем диск С в файловую систему
+fileSystem.Add(diskC);
+// выводим все данные
+fileSystem.Print();
+Console.WriteLine();
+// удаляем с диска С файл
+diskC.Remove(pngFile);
+// создаем новую папку
+Component docsFolder = new Directory("Мои Документы");
+// добавляем в нее файлы
+Component txtFile = new File("readme.txt");
+Component csFile = new File("Program.cs");
+docsFolder.Add(txtFile);
+docsFolder.Add(csFile);
+diskC.Add(docsFolder);
+
+fileSystem.Print();

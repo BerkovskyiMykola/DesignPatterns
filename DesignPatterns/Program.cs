@@ -15,6 +15,7 @@ using DesignPatterns.Iterator;
 using DesignPatterns.Observer;
 using DesignPatterns.Observer.Displays;
 using DesignPatterns.Singleton;
+using DesignPatterns.State;
 using DesignPatterns.Strategy;
 using DesignPatterns.Strategy.Ducks;
 using DesignPatterns.Template_Method;
@@ -145,3 +146,9 @@ docsFolder.Add(csFile);
 diskC.Add(docsFolder);
 
 fileSystem.Print();
+
+Console.WriteLine("--------");
+
+GumBallMachine g = new GumBallMachine(10);
+g.InsertQuarter();
+g.TurnCrank();

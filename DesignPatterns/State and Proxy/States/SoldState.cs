@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.State.States
+﻿namespace DesignPatterns.State_and_Proxy.States
 {
     internal class SoldState : IState
     {

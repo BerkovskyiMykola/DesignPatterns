@@ -1,6 +1,6 @@
-﻿using DesignPatterns.State.States;
+﻿using DesignPatterns.State_and_Proxy.States;
 
-namespace DesignPatterns.State
+namespace DesignPatterns.State_and_Proxy
 {
     internal class GumBallMachine
     {
@@ -10,9 +10,11 @@ namespace DesignPatterns.State
         public IState SoldState { get; set; }
         public IState State { get; set; }
         public int Count { get; set; } = 0;
+        public string Location { get; set; }
 
-        public GumBallMachine(int count)
+        public GumBallMachine(string location, int count)
         {
+            Location = location;
             HasQuarterState = new HasQuarterState(this);
             SoldOutState = new SoldOutState(this);
             NoQuarterState = new NoQuarterState(this);
